@@ -1,0 +1,45 @@
+version: "2"
+services:
+  zk:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.20
+
+  kafka-1:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.21
+
+  kafka-2:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.22
+
+  kafka-3:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.23
+
+  # https://github.com/yahoo/kafka-manager
+  kafka-manager:
+    image: qnib/plain-kafka-manager
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.24
+    environment:
+      ZOOKEEPER_HOSTS: "172.18.0.20:2181"
+      APPLICATION_SECRET: change_me_please
+    restart: always
+
+networks:
+  confluent:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1

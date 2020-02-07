@@ -1,0 +1,25 @@
+version: "2"
+services:
+  zk-1:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.11
+  zk-2:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.12
+  zk-3:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.13
+networks:
+  confluent:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1
