@@ -1,0 +1,16 @@
+version: "2"
+services:
+  zk-kafka:
+    image: centos:7
+    networks:
+      confluent:
+        ipv4_address: 172.18.0.31
+
+networks:
+  confluent:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1
