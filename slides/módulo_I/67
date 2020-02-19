@@ -1,0 +1,3 @@
+mvn exec:java -Dexec.mainClass="com.treelogic.curso.kafka.CustomKafkaConsumer"
+
+mvn exec:java -Dexec.mainClass="com.treelogic.curso.kafka.CustomKafkaProducer"

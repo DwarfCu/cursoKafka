@@ -1,0 +1,3 @@
+zookeeper-server-start.sh -daemon $KAFKA_HOME/config/zookeeper.properties
+
+tail -f $KAFKA_HOME/logs/zookeeper.out

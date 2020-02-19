@@ -1,0 +1,7 @@
+cd cursoKafka/Docker/3.1.Kafka_Streams
+
+docker-compose run --rm zk-kafka /bin/bash
+
+kafka-topics.sh --zookeeper localhost:2181 --create --topic streams-plaintext-input --replication-factor 1 --partitions 1
+
+kafka-topics.sh --zookeeper localhost:2181 --create --topic streams-wordcount-output --replication-factor 1 --partitions 1
