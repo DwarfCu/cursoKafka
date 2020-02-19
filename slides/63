@@ -1,1 +1,11 @@
+yum install -y git maven
 
+cd ~
+
+git clone https://github.com/DwarfCu/cursoKafka.git
+
+cd ~/cursoKafka/Docker/1.3.Usando_Apache_Kafka/Custom_Producer_and_Consumer/
+
+kafka-topics.sh --zookeeper 172.18.0.3:2181 --topic usandoapachekafka_2 --create --partitions 10 --replication-factor 1
+
+mvn clean package
